@@ -72,6 +72,13 @@
             <artifactId>zkclient</artifactId>
             <version>0.11</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.auth0</groupId>
+            <artifactId>java-jwt</artifactId>
+            <version>3.18.1</version>
+        </dependency>
+
     </dependencies>
 
 <!--    <properties>-->
@@ -94,8 +101,9 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>16</source>
-                    <target>16</target>
+                    <includes>
+                        <include>com/javapractice/hadoop/**</include>
+                    </includes>
                 </configuration>
             </plugin>
         </plugins>
