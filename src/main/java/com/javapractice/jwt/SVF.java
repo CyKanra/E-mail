@@ -17,10 +17,11 @@ public class SVF {
    * @throws InterruptedException 
    */
   public static void main(String[] args) throws InterruptedException {
-    String accessToken = "1b09a248dd09bb87f5d3d26cb8462b0d2797df62e20793dee32443b741c6e06b";
+    String accessToken = "e468b0f69c05aa25df534b2efab2bef0c97527ba0dbac03c8b22a2b08324c554";
     String printerId = "EXCEL";
     String formFilePath = "form/Demo/demo.xlsx";
-    String dataFilePath = "D:\\sub.csv";
+//    String formFilePath = "form/Demo/Mytest.xml";
+    String dataFilePath = "C:\\LHN\\Project\\sub.csv";
     String resourceFilePath = "";
 
     // 帳票出力
@@ -63,7 +64,7 @@ public class SVF {
       OutputStream outputStream = conn.getOutputStream();
       PrintWriter writer = new PrintWriter(new OutputStreamWriter(outputStream, "UTF-8"), true);
       // リクエストデータの作成
-      writeFormData(writer, boundary, "name", "WingArc");// 文書名を指定
+      writeFormData(writer, boundary, "name", "sub");// 文書名を指定
       writeFormData(writer, boundary, "source", "CSV");// 帳票データタイプを指定します。"CSV"固定で指定してください
       if (printerId != null) {
         writeFormData(writer, boundary, "printer", printerId);// 出力先プリンターのID
@@ -79,11 +80,11 @@ public class SVF {
       
       // CSVデータ
       File datafile = new File(dataFilePath);
-      writeFileData(writer, outputStream, boundary, URLEncoder.encode("work/"/* "PDFプロパティのタイトルに適用されます。例)発注書"。 */, "UTF-8"), datafile.getName(), datafile);// CSVファイル
+      writeFileData(writer, outputStream, boundary, URLEncoder.encode("data/"/* "PDFプロパティのタイトルに適用されます。例)発注書"。 */, "UTF-8"), datafile.getName(), datafile);// CSVファイル
 
       // イメージデータ
 //      File resourceFile = new File(resourceFilePath);
-//      writeFileData(writer, outputStream, boundary, URLEncoder.encode("resource/Demo", "UTF-8"), resourceFile.getName(), resourceFile);// イメージファイル
+//      writeFileData(writer, outputStream, boundary, URLEncoder.encode("resource/", "UTF-8"), resourceFile.getName(), resourceFile);// イメージファイル
       
       writer.append("--").append(boundary).append("--").append(CRLF);
       
