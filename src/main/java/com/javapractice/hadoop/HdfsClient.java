@@ -38,4 +38,5 @@ public class HdfsClient {
             fs.close();
         }
 
+
 }

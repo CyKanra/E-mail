@@ -14,7 +14,6 @@ public class CreateSession {
 
     public static void main(String[] args) throws IOException {
         ZkClient zkClient = new ZkClient("192.168.31.131:2181");
-//        ZKClient zkClient = new ZKClient("192.168.31.131:2181");
         System.out.println("ZooKeeper session created");
     }
 }
